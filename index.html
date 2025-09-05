@@ -1,0 +1,61 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Wedding Invitation
+  </title>
+ <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lavishly+Yours&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+ </head>
+ <body class="min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="relative w-[200px] h-screen bg-ungu">
+    <div class="relative w-full h-full flex-col flex items-center">
+   <p class="text-kuning text-sm mb-2 mt-7 font-lora">
+    Wedding Invitation
+   </p>
+   <h1 class="font-lavi text-kuning text-5xl mb-10 mt-6 leading-tight">
+    Bro &amp; Sis
+   </h1>
+   <div class="relative w-[280px] h-[280px] rounded-full border-8 border-[#3c153b] overflow-hidden mb-10">
+    <img alt="ft" class="w-full h-full object-cover" height="280" src="./img/ft1.jpg" width="280"/>
+   </div>
+   <p class="text-kuning text-xs mb-1 font-lora">
+    Kepada yth. bapak/ibu/saudara/i
+   </p>
+   <h3 id="penerima" class="text-2xl font-cormorant text-kuning mt-2 mb-3 text-center"></h3>
+   <a href="home.html">
+   <button id="openBtn" class="bg-kuning text-ungu rounded-full px-5 py-2 text-lg font-lora max-w-[220px] mt-2">
+    Buka Undangan
+   </button>
+   </a>
+   </div>
+  </div>
+  <img alt="bg" class="absolute top-0 left-1/2 -translate-x-1/2 h-full object-cover w-[600px] pointer-events-none select-none h-screen" src="./img/ft1.jpg" style="z-index:-1" width="600"/>
+  
+   <script>
+     //animasi
+  document.getElementById("openBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.body.classList.add("blur-out"); // aktifin animasi
+    setTimeout(() => {
+      window.location.href = "home.html" + window.location.search;
+    }, 1500); // waktunya sama kayak durasi animasi
+  });
+
+  
+      // Ambil parameter dari URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('to'); // baca nilai ?to=
+  
+      // Kalau ada nama → tampilkan di <h3>
+      if (nama) {
+        document.getElementById("penerima").innerText = nama;
+      }
+    </script>
+ </body>
+</html>

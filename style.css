@@ -1,0 +1,218 @@
+.font-lavi {
+  font-family: "Lavishly Yours", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+.font-cormorant {
+  font-family: "Cormorant Garamond", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.font-lora {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.text-ungu {
+  color: #3c153b;
+}
+
+.text-kuning {
+  color: #f0c986;
+}
+
+.text-ireng {
+  color: #323232;
+}
+
+.text-tipis {
+  color: #f0dfc2;
+}
+
+.bg-tipis {
+  background-color: #f0dfc2;
+}
+
+.bg-semi {
+  background-color: #ffe3fe;
+}
+
+.bg-kuning {
+  background-color: #f0c986;
+}
+
+.bg-ungu {
+  background-color: #3c153b;
+}
+
+.particle {
+  position: absolute;
+  bottom: -50px;
+  border-radius: 50%;
+  background: rgba(60, 21, 59, 0.4); /* ungu dengan opacity */
+  animation: rise linear forwards;
+}
+
+/* animasi naik */
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(0.7);
+    opacity: 0;
+  }
+}
+
+  /* Default biar smooth */
+  body {
+    opacity: 1;
+    transition: opacity 0.6s ease;
+  }
+
+  /* Animasi burn out */
+  @keyframes blurOut {
+    0% {
+      opacity: 1;
+      filter: blur(0px);
+    }
+    100% {
+      opacity: 0;
+      filter: blur(10px);
+    }
+  }
+
+  body.blur-out {
+    animation: blurOut 1.5s forwards ease;
+  }
+
+
+  body.burn-out {
+    animation: burnOut 1.5s forwards ease-in;
+  }
+  
+  /* story */
+    .progress-bar {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #3c153b; /* abu-abu */
+    }
+    .progress-fill {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      width: 4px;
+      height: 0;
+      background: #f0c986; /* biru */
+    }
+    
+    .audio-btn {
+  position: fixed;     /* bikin melayang */
+  bottom: 20px;        /* jarak dari bawah */
+  right: 20px;         /* jarak dari kanan */
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;  /* bulat */
+  background: #3c153b;    /* warna background */
+  color: #fff;         /* warna icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: background 0.2s ease, transform 0.15s ease;
+  z-index: 9999;       /* pastiin di atas elemen lain */
+}
+
+.audio-btn:hover {
+  background: #3c153b;
+}
+
+.audio-btn:active {
+  transform: scale(0.95);
+}
+
+.audio-btn svg {
+  fill: currentColor;
+}
+
+
+  .scroll-btn {
+    position: fixed;
+    bottom: 80px;      /* biar ga tabrakan sama tombol musik */
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: #3c153b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: background 0.2s ease, transform 0.15s ease;
+    z-index: 9999;
+  }
+  .scroll-btn:hover { background: #3c153b; }
+  .scroll-btn:active { transform: scale(0.95); }
+  .scroll-btn svg { fill: currentColor; }
+  
+.bottom-nav {
+  position: fixed;
+  bottom: 15px;               /* agak naik biar ada jarak dari bawah */
+  left: 50%;                  /* mulai dari tengah */
+  transform: translateX(-50%);/* geser biar benar2 center */
+  width: 70%;
+  height: 50px;
+  background: #3c153b;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.25);
+  border-radius: 9999px;       /* biar full rounded (pill shape) */
+  padding: 0 10px;             /* kasih padding kanan kiri */
+}
+
+.bottom-nav a {
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.bottom-nav a .icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 auto 2px;
+  display: block;
+}
+
+.bottom-nav a span {
+  display: block;
+}
+
+.bottom-nav a:hover {
+  color: #f0c986;
+}

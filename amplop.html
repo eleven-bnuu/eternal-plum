@@ -1,0 +1,93 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Wedding Invitation
+  </title>
+    <link rel="icon" href="./img/favicon.png" type="image/png">
+ <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lavishly+Yours&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+   <section id="amplop" class="bg-white py-9">
+    <div class="flex items-center justify-between -mt-5 mb-5">
+      <!-- Bagian teks -->
+  <div class="text-left leading-tight">
+    <h3 class="font-cormorant text-4xl m-0 ml-5 text-[#3c153b]/80">AMPLOP</h3>
+    <h3 class="font-lavi text-5xl text-ungu -mt-5 ml-5">Digital</h3>
+  </div>
+
+  <!-- Garis di sebelah kanan -->
+  <div class="flex-1 border-b-2 border-[#3c153b] ml-8"></div>
+  </div>
+       <!-- Card -->
+<div class="flex items-center justify-center mt-8 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+  <div class="w-80 rounded-2xl shadow-xl p-6 relative text-white bg-cover bg-center"
+       style="background-image: url('./img/bgatm.jpg');">
+       
+    <!-- Logo + Chip -->
+    <div class="flex justify-between items-center mb-6">
+      <!-- Chip -->
+      <img src="./img/chip.png" alt="chip" class="h-10">
+      <!-- Logo Bank -->
+      <img src="./img/gopay.png" alt="logo bank" class="h-8">
+    </div>
+
+    <!-- Nomor Rekening -->
+    <p class="text-2xl tracking-widest mb-2 text-gray-600" id="norek">0812 3456 7891</p>
+
+    <!-- Atas Nama -->
+    <p class="uppercase font-semibold text-gray-600">A/n : mba sister</p>
+
+    <!-- Tombol Copy -->
+    <button 
+        class="mt-5 w-full bg-[#00b0d7] text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#007792] transition copy-btn" 
+        data-norek="081234567891">
+        Copy No Rekening
+    </button>
+  </div>
+</div>
+
+
+       <!-- Card 2 -->
+  <div class="flex items-center justify-center mt-8 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+  <div class="w-80 rounded-2xl shadow-xl p-6 relative text-white bg-cover bg-center"
+       style="background-image: url('./img/bgatm.jpg');">
+       
+    <!-- Logo + Chip -->
+    <div class="flex justify-between items-center mb-6">
+      <!-- Chip -->
+      <img src="./img/chip.png" alt="chip" class="h-10">
+      <!-- Logo Bank -->
+      <img src="./img/bri.png" alt="logo bank" class="h-8">
+    </div>
+
+    <!-- Nomor Rekening -->
+    <p class="text-2xl tracking-widest mb-2 text-gray-600" id="norek">9876 5432 1098</p>
+
+    <!-- Atas Nama -->
+    <p class="uppercase font-semibold text-gray-600">A/n : mba sister</p>
+
+    <!-- Tombol Copy -->
+    <button 
+        class="mt-5 w-full bg-[#2f51a1] text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-[#20376d] transition copy-btn" 
+        data-norek="987654321098">
+        Copy No Rekening
+    </button>
+  </div>
+</div>
+
+
+  <!-- Toast -->
+  <div id="toast" 
+       class="fixed bottom-5 right-10 left-10 bg-[f6f6f6] text-ireng px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-500 text-center">
+    nomor rekening tersalin!
+  </div>
+   </section>
+ </body>
+</html>

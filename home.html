@@ -1,0 +1,614 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Wedding Invitation
+  </title>
+    <link rel="icon" href="./img/favicon.png" type="image/png">
+ <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lavishly+Yours&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+ </head>
+ <body>
+
+<section id="hero" class="relative w-full h-full text-white overflow-hidden">
+
+  <!-- LAYER BACKGROUND (untuk crossfade) -->
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div id="bgA" class="absolute inset-0 bg-cover bg-center opacity-100 transition-opacity duration-1000"></div>
+    <div id="bgB" class="absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-1000"></div>
+  </div>
+  
+  <!-- partikel -->
+  <div id="particles" class="absolute inset-0 z-10 overflow-hidden"></div>
+
+  <!-- overlay tetap di atas background -->
+  <div class="absolute inset-0 z-10 bg-[#1b1e23]/60"></div>
+  <div class="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-white/40 to-white"></div>
+
+  <!-- card -->
+  <div class="absolute bottom-5 left-1/2 -translate-x-1/2 
+   bg-[#3c153b]/80 rounded-tr-[80px] p-6 w-[350px] 
+   text-left text-white shadow-lg z-20 reveal slide-up opacity-0 translate-y-10 duration-1000">
+    <p class="text-sm mb-4 font-lora text-kuning">The Wedding Of</p>
+    <h3 class="text-7xl font-lavi mb-3 text-kuning">Bro &amp; Sis</h3>
+
+    <!-- Countdown -->
+    <div id="countdown" class="flex justify-left gap-3 text-lg font-semibold mb-6 text-kuning mt-5">
+      <div class="flex flex-col items-center ">
+        <span id="days">00</span>
+        <span class="text-xs">Hari</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="hours">00</span>
+        <span class="text-xs">Jam</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="minutes">00</span>
+        <span class="text-xs">Menit</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <span id="seconds">00</span>
+        <span class="text-xs">Detik</span>
+      </div>
+    </div>
+
+    <!-- Tombol -->
+    <a href="https://calendar.google.com">
+      <button class="bg-kuning text-ungu px-6 py-2 rounded-full font-lora hover:bg-yellow-400 transition">
+        save the date
+      </button>
+    </a>
+  </div>
+</section>
+
+<div id="mempelai"></div>
+<div id="acara"></div>
+<div id="qoutes"></div>
+<div id="story"></div>
+<div id="gallery"></div>
+<div id="closing"></div>
+
+<!-- rsvp -->
+<section id="rsvp">
+  <div class="relative isolate overflow-hidden rounded-tr-[80px] rounded-bl-[80px] shadow-xl mx-auto max-w-6xl">
+    <!-- Background image -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('./img/ft2.jpg');"></div>
+
+    <!-- Grid Counter -->
+    <div class="grid grid-cols-3 gap-4 text-center mb-8 mx-4 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000 mt-10">
+      <div class="bg-[#ffe3fe]/40 backdrop-blur-md p-4 rounded-lg shadow">
+        <h3 class="text-5xl font-lora text-ungu" id="countHadir">0</h3>
+        <p class="font-lora text-ungu text-sm">Hadir</p>
+      </div>
+      <div class="bg-[#ffe3fe]/40 backdrop-blur-md p-4 rounded-lg shadow">
+        <h3 class="text-5xl font-lora text-ungu" id="countTidak">0</h3>
+        <p class="font-lora text-ungu text-sm">Tidak Hadir</p>
+      </div>
+      <div class="bg-[#ffe3fe]/40 backdrop-blur-md p-4 rounded-lg shadow">
+        <h3 class="text-5xl font-lora text-ungu" id="countRagu">0</h3>
+        <p class="text-cerah font-quicksand text-sm">Ragu</p>
+      </div>
+    </div>
+
+    <!-- Form RSVP -->
+    <div class="bg-[#ffe3fe]/40 backdrop-blur-md p-6 rounded-2xl shadow-lg mb-8 mx-4 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+      <form id="rsvpForm" class="space-y-4">
+        <input type="text" id="nama" placeholder="Nama" required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3c153b] font-quicksand">
+
+        <select id="status" required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3c153b] font-quicksand">
+          <option value="" disabled selected>Konfirmasi Kehadiran</option>
+          <option value="Hadir">Hadir</option>
+          <option value="Tidak Hadir">Tidak Hadir</option>
+          <option value="Ragu">Ragu</option>
+        </select>
+
+        <textarea id="ucapan" placeholder="Tulis ucapan..." rows="3"
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3c153b] font-quicksand"></textarea>
+
+        <button type="submit"
+          class="w-full bg-ungu text-white py-2 rounded-lg hover:bg-[#2d102c] font-lora transition">
+          Kirim
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- List Ucapan -->
+  <div class="bg-semi p-6 rounded-tl-[80px] rounded-br-[80px] shadow-lg mt-7 reveal slide-up opacity-0 translate-y-10 transition-all duration-1000">
+    <h3 class="text-2xl font-lora mb-4 text-ungu text-center">Ucapan &amp; Doa</h3>
+    <div id="listUcapan" class="space-y-4">
+      <!-- Data ucapan dari Firebase muncul di sini -->
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-between mt-4">
+      <button id="prevBtn" class="bg-ungu text-white px-4 py-2 rounded-lg">Prev</button>
+      <button id="nextBtn" class="bg-ungu text-white px-4 py-2 rounded-lg">Next</button>
+    </div>
+  </div>
+</section>
+
+<!-- === POPUP ALERT === -->
+<div id="popupAlert" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-xl shadow-xl max-w-sm text-center">
+    <p id="popupMessage" class="font-quicksand text-lg text-gray-800"></p>
+    <button onclick="closePopup()" class="mt-4 px-4 py-2 bg-ungu text-white rounded-lg">OK</button>
+  </div>
+</div>
+
+<div id="amplop"></div>
+<div id="footer"></div>
+<div id="navbar"></div>
+
+<audio id="myAudio" autoplay loop>
+  <source src="./musik/bgm.mp3" type="audio/mpeg" />
+  Browser lo ga support audio.
+</audio>
+
+<!-- Tombol control scroll -->
+<!-- Tombol auto scroll -->
+<button id="scrollToggle" class="scroll-btn" aria-pressed="true" aria-label="Pause auto scroll">
+  <!-- Pause (Stop icon) -->
+  <svg id="scrollPause" viewBox="0 0 24 24" width="20" height="20">
+    <rect x="6" y="6" width="12" height="12" rx="2"></rect>
+  </svg>
+
+  <!-- Play (Mouse + arrow down) -->
+  <svg id="scrollPlay" viewBox="0 0 24 24" width="20" height="20" style="display:none;">
+    <!-- Mouse body -->
+    <rect x="8" y="3" width="8" height="14" rx="4" ry="4"></rect>
+    <!-- Scroll wheel -->
+    <line x1="12" y1="5" x2="12" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
+    <!-- Arrow down -->
+    <path d="M8 18l4 4 4-4"></path>
+  </svg>
+</button>
+<!-- btn muski-->
+<button id="audioToggle" class="audio-btn" aria-pressed="true" aria-label="Pause audio">
+  <!-- Pause icon (dua batang) -->
+  <svg id="iconPause" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+    <rect x="5" y="4" width="4" height="16" rx="1"></rect>
+    <rect x="15" y="4" width="4" height="16" rx="1"></rect>
+  </svg>
+
+  <!-- Play icon (segitiga) -->
+  <svg id="iconPlay" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" style="display:none;">
+    <path d="M6 4l14 8-14 8V4z"></path>
+  </svg>
+</button>
+<!-- script rsvp -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, query, orderBy, limit, startAfter,
+    getDocs, onSnapshot, where, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfECxfrcTGuLaqDlzI54lAtYUc9adP8zo",
+    authDomain: "undangan-premium-1.firebaseapp.com",
+    projectId: "undangan-premium-1",
+    storageBucket: "undangan-premium-1.appspot.com",
+    messagingSenderId: "477006186755",
+    appId: "1:477006186755:web:1afddb6afff9256c858136",
+    measurementId: "G-S8B22CFKBX"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ---------- REAL-TIME COUNTERS ----------
+  // Menghitung jumlah dokumen sesuai status secara real-time
+  const ucapanRef = collection(db, "ucapan"); // <-- UBAH nama collection di sini kalau perlu
+  onSnapshot(query(ucapanRef, where("status", "==", "Hadir")), (snap) => {
+    document.getElementById("countHadir").textContent = snap.size;
+  });
+  onSnapshot(query(ucapanRef, where("status", "==", "Tidak Hadir")), (snap) => {
+    document.getElementById("countTidak").textContent = snap.size;
+  });
+  onSnapshot(query(ucapanRef, where("status", "==", "Ragu")), (snap) => {
+    document.getElementById("countRagu").textContent = snap.size;
+  });
+
+  // ---------- PAGINATION (5 terakhir + Next/Prev) ----------
+  const PAGE_SIZE = 5;
+  const pages = [];   // array of arrays (tiap elemen = 1 halaman list docs)
+  let pageIndex = 0;  // index halaman aktif
+
+  async function fetchPage(afterDoc = null) {
+    let q = query(ucapanRef, orderBy("createdAt", "desc"), limit(PAGE_SIZE));
+    if (afterDoc) q = query(ucapanRef, orderBy("createdAt", "desc"), startAfter(afterDoc), limit(PAGE_SIZE));
+    const snap = await getDocs(q);
+    return snap.docs;
+  }
+
+  function renderUcapan(docs) {
+    const list = document.getElementById("listUcapan");
+    list.innerHTML = "";
+    docs.forEach(doc => {
+      const data = doc.data();
+      const nama = data.nama || "-";
+      const status = data.status || "-";
+      const ucapan = data.ucapan || "";
+      const item = document.createElement("div");
+      item.className = "bg-white p-4 rounded-lg shadow";
+      item.innerHTML = `
+        <p class="font-lora text-ungu text-lg">${nama}
+          <span class="text-sm text-gray-600">— ${status}</span>
+        </p>
+        <p class="font-quicksand text-gray-700 mt-1">${ucapan}</p>
+      `;
+      list.appendChild(item);
+    });
+
+    // tombol prev/next state
+    document.getElementById("prevBtn").disabled = pageIndex === 0;
+    document.getElementById("nextBtn").disabled = docs.length < PAGE_SIZE; // kalau kurang dari PAGE_SIZE, berarti sudah mentok
+  }
+
+  async function loadInitial() {
+    const firstDocs = await fetchPage();
+    pages.length = 0;
+    pages.push(firstDocs);
+    pageIndex = 0;
+    renderUcapan(pages[0]);
+  }
+
+  document.getElementById("nextBtn").addEventListener("click", async () => {
+    const currentPage = pages[pageIndex];
+    if (!currentPage || currentPage.length === 0) return;
+
+    // Kalau halaman berikutnya sudah pernah di-load, pakai cache
+    if (pages[pageIndex + 1]) {
+      pageIndex += 1;
+      renderUcapan(pages[pageIndex]);
+      return;
+    }
+
+    // Ambil halaman berikutnya mulai setelah dokumen terakhir di halaman sekarang
+    const lastDoc = currentPage[currentPage.length - 1];
+    const nextDocs = await fetchPage(lastDoc);
+    if (nextDocs.length === 0) return; // mentok
+    pages.push(nextDocs);
+    pageIndex += 1;
+    renderUcapan(nextDocs);
+  });
+
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    if (pageIndex === 0) return;
+    pageIndex -= 1;
+    renderUcapan(pages[pageIndex]);
+  });
+
+  // ---------- FORM SUBMIT + POPUP ----------
+  document.getElementById("rsvpForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const nama = document.getElementById("nama").value.trim();
+    const status = document.getElementById("status").value;
+    const ucapan = document.getElementById("ucapan").value.trim();
+
+    if (!nama || !status) {
+      showPopup("Nama dan status wajib diisi.");
+      return;
+    }
+
+    try {
+      await addDoc(ucapanRef, {
+        nama,
+        status,
+        ucapan,
+        createdAt: serverTimestamp() // pakai server timestamp biar urutan konsisten
+      });
+      showPopup("Terima kasih! Ucapanmu berhasil terkirim.");
+      e.target.reset();
+
+      // refresh halaman pertama supaya item terbaru langsung muncul
+      await loadInitial();
+    } catch (err) {
+      showPopup("Gagal mengirim ucapan: " + err.message);
+    }
+  });
+
+  // ---------- POPUP HELPERS ----------
+  function showPopup(message) {
+    document.getElementById("popupMessage").innerText = message;
+    document.getElementById("popupAlert").classList.remove("hidden");
+  }
+  window.closePopup = function () {
+    document.getElementById("popupAlert").classList.add("hidden");
+  }
+
+  // Load awal
+  loadInitial();
+</script>
+
+<script>
+  // musik
+  const audio = document.getElementById('myAudio');
+const btnAudio = document.getElementById('audioToggle');
+const iconPlayAudio = document.getElementById('iconPlay');
+const iconPauseAudio = document.getElementById('iconPause');
+
+function setAudioUI(isPlaying) {
+  if (isPlaying) {
+    iconPlayAudio.style.display = 'none';
+    iconPauseAudio.style.display = '';
+  } else {
+    iconPauseAudio.style.display = 'none';
+    iconPlayAudio.style.display = '';
+  }
+}
+
+btnAudio.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    setAudioUI(true);
+  } else {
+    audio.pause();
+    setAudioUI(false);
+  }
+});
+
+setAudioUI(!audio.paused);
+
+  
+  //auto scroll
+  let scrollInterval;
+const btnScroll = document.getElementById('scrollToggle');
+const iconPlayScroll = document.getElementById('scrollPlay');
+const iconPauseScroll = document.getElementById('scrollPause');
+
+function setScrollUI(isScrolling) {
+  if (isScrolling) {
+    iconPlayScroll.style.display = 'none';
+    iconPauseScroll.style.display = '';
+  } else {
+    iconPauseScroll.style.display = 'none';
+    iconPlayScroll.style.display = '';
+  }
+}
+
+function startScroll() {
+  stopScroll();
+  scrollInterval = setInterval(() => {
+    window.scrollBy(0, 1);
+  }, 20);
+  setScrollUI(true);
+}
+
+function stopScroll() {
+  clearInterval(scrollInterval);
+  scrollInterval = null;
+  setScrollUI(false);
+}
+
+btnScroll.addEventListener('click', () => {
+  if (scrollInterval) stopScroll();
+  else startScroll();
+});
+
+// Auto jalan pas load
+startScroll();
+
+  //storyy
+  const progress = document.getElementById("progress");
+  const section = document.getElementById("story");
+
+  window.addEventListener("scroll", () => {
+    let scrollTop = window.scrollY - section.offsetTop;
+    let sectionHeight = section.offsetHeight - window.innerHeight;
+    let percent = Math.min(Math.max(scrollTop / sectionHeight, 0) * 100, 100);
+    progress.style.height = percent + "%";
+  });
+  
+    //galleri
+  function changeBg(img) {
+      const bg = document.getElementById('background');
+      bg.style.backgroundImage = `url(${img})`;
+    }
+
+    
+  //ganti bg
+  const images = [
+    "./img/ft1.jpg",
+    "./img/ft2.jpg",
+    "./img/ft3.jpg",
+    "./img/ft4.jpg",
+    "./img/ft5.jpg"
+  ];
+
+  // preload biar nggak kedip putih saat ganti
+  images.forEach(src => { const i = new Image(); i.src = src; });
+
+  const bgA = document.getElementById("bgA");
+  const bgB = document.getElementById("bgB");
+
+  let showingA = true;   // layer mana yang sedang kelihatan
+  let index = 1;         // next image index (kita tampilkan ft1 dulu di A)
+
+  // set foto awal
+  bgA.style.backgroundImage = `url('${images[0]}')`;
+  bgB.style.backgroundImage = `url('${images[1 % images.length]}')`;
+
+  function crossfade() {
+    const nextUrl = images[index % images.length];
+    const fadeIn = showingA ? bgB : bgA;
+    const fadeOut = showingA ? bgA : bgB;
+
+    // siapkan gambar berikutnya di layer yang akan fade-in
+    fadeIn.style.backgroundImage = `url('${nextUrl}')`;
+
+    // lakukan crossfade
+    fadeOut.classList.remove("opacity-100");
+    fadeOut.classList.add("opacity-0");
+    fadeIn.classList.remove("opacity-0");
+    fadeIn.classList.add("opacity-100");
+
+    // toggle state
+    showingA = !showingA;
+    index++;
+  }
+
+  // mulai slideshow
+  setInterval(crossfade, 4000); // ganti tiap 5 detik
+  
+  //countdown
+  // Tanggal target
+  const targetDate = new Date("2025-12-31T23:59:59").getTime();
+
+  const countdown = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdown);
+      document.getElementById("countdown").innerHTML = "Acara dimulai!";
+      return;
+    }
+
+    document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+  }, 1000);
+
+// Partikel
+  const particleContainer = document.getElementById("particles");
+
+  function createParticle() {
+    const particle = document.createElement("span");
+    particle.classList.add("particle");
+
+    // ukuran random
+    const size = Math.floor(Math.random() * 20) + 10; // 10px - 30px
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+
+    // posisi random (horizontal)
+    particle.style.left = Math.random() * 100 + "vw";
+
+    // durasi animasi random
+    const duration = Math.random() * 2 + 10; // 8s - 18s
+    particle.style.animationDuration = `${duration}s`;
+
+    particleContainer.appendChild(particle);
+
+    // hapus partikel setelah animasi selesai biar ga numpuk
+    setTimeout(() => {
+      particle.remove();
+    }, duration * 1000 + 500);
+  }
+
+  // spawn partikel setiap 500ms
+  setInterval(createParticle, 500);
+  
+  //animasi
+  const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+
+      // Slide dari kiri
+      if (el.classList.contains("slide-left")) {
+        el.classList.remove("opacity-0", "-translate-x-10");
+        el.classList.add("opacity-100", "translate-x-0");
+      }
+
+      // Slide dari kanan
+      if (el.classList.contains("slide-right")) {
+        el.classList.remove("opacity-0", "translate-x-10");
+        el.classList.add("opacity-100", "translate-x-0");
+      }
+      
+      // slide-down
+if (el.classList.contains("slide-down")) {
+  el.classList.remove("opacity-0", "-translate-y-10");
+  el.classList.add("opacity-100", "translate-y-0");
+}
+
+
+      // Slide dari bawah
+      if (el.classList.contains("slide-up")) {
+        el.classList.remove("opacity-0", "translate-y-10");
+        el.classList.add("opacity-100", "translate-y-0");
+      }
+
+      // Fade in
+      if (el.classList.contains("fade-in")) {
+        el.classList.remove("opacity-0");
+        el.classList.add("opacity-100");
+      }
+
+      // Zoom in
+      if (el.classList.contains("zoom-in")) {
+        el.classList.remove("opacity-0", "scale-95");
+        el.classList.add("opacity-100", "scale-100");
+      }
+
+      // Kalau sudah kelihatan, stop observe biar ga diulang
+      observer.unobserve(el);
+    }
+  });
+});
+
+// Observe semua elemen dengan class .reveal
+document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+  
+    //panggil section
+  function loadSection(id, url) {
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Gagal load " + url);
+      }
+      return response.text();
+    })
+    .then(data => {
+      const container = document.getElementById(id);
+      container.innerHTML = data;
+
+      // Re-observe elemen baru yang ada .reveal
+      container.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+}
+
+  // panggil section
+  loadSection("mempelai", "./mempelai.html");
+  loadSection("qoutes", "./qoutes.html")
+  loadSection("acara", "./acara.html");
+  loadSection("story", "./story.html");
+  loadSection("gallery", "./gallery.html");
+  loadSection("closing", "./closing.html");
+  loadSection("footer", "./footer.html");
+  loadSection("amplop", "./amplop.html");
+  loadSection("navbar", "./navbar.html")
+  
+  document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("copy-btn")) {
+    const norek = e.target.getAttribute("data-norek");
+    navigator.clipboard.writeText(norek).then(() => {
+      const toast = document.getElementById("toast");
+      toast.classList.remove("opacity-0");
+      toast.classList.add("opacity-100");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100");
+        toast.classList.add("opacity-0");
+      }, 2500);
+    });
+  }
+});
+</script>
+ </body>
+</html>
